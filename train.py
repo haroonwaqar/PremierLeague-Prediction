@@ -113,9 +113,6 @@ def refactor_features(matches):
 
 matches = refactor_features(matches)
 
-train = matches[matches["date"] < '2024-08-17']
-test = matches[matches["date"] >= '2024-08-17']
-
 predictors = ["venue_code", "opp_code", "hours", "day_code", "team_form_5", 
               "avg_gf_5", "avg_ga_5", "avg_gd_5", "roll_xg_10", "opp_form_5", 
               "form_difference_5", "avg_sh_5", "avg_sot_5", "total_team_points"]
@@ -127,9 +124,7 @@ model = Pipeline([
             max_depth=12, random_state=1)
     )])
 
-model.fit(train[predictors], train["target"])
-
-test.to_csv("test_pl_season.csv")
+model.fit(matches[predictors], matches["target"])
 
 joblib.dump(model, "PL_football_pipeline.pkl")
 
