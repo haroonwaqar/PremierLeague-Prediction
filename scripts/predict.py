@@ -1,22 +1,20 @@
 import joblib
 import pandas as pd
-from train import refactor_features
+from scripts.train import refactor_features
 
+# getting the model 
 pipeline = joblib.load("PL_football_pipeline.pkl")
 
+# read this season
 new_matches = pd.read_csv("pl_25_26.csv")
 
+# add the new features need for prediction 
 new_matches = refactor_features(new_matches)
-
-new_matches = new_matches.drop(columns="target")
 
 new_matches = new_matches[["date", "team", "opponent", "round",
             "venue_code", "opp_code", "hours", "day_code", "team_form_5", 
             "avg_gf_5", "avg_ga_5", "avg_gd_5", "roll_xg_10", "opp_form_5", 
             "form_difference_5", "avg_sh_5", "avg_sot_5", "total_team_points"]]
-
-new_matches.to_csv("test.csv")
-
 
 # Make prediction
 def prediction(match_row):
@@ -28,8 +26,10 @@ def prediction(match_row):
     (new_matches["round"] == match_row["round"])
     ]
 
+    # getting that exact row
     prediction_match = prediction_match.iloc[[0]]
 
+    # dropping columns model don't need
     prediction_match = prediction_match.drop(columns=["date","team","opponent","round"])
 
     pred = pipeline.predict(prediction_match)

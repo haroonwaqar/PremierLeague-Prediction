@@ -5,4 +5,4 @@ __pycache__/
 *.pyo
 .DS_Store
 Thumbs.db
-*.csv
+PL_football_pipeline.pkl

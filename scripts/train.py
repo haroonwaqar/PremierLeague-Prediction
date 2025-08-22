@@ -109,19 +109,22 @@ def refactor_features(matches):
 
     return matches
 
-# Training the model ---
-
+# training the model
 matches = refactor_features(matches)
 
+# training features list
 predictors = ["venue_code", "opp_code", "hours", "day_code", "team_form_5", 
               "avg_gf_5", "avg_ga_5", "avg_gd_5", "roll_xg_10", "opp_form_5", 
               "form_difference_5", "avg_sh_5", "avg_sot_5", "total_team_points"]
 
 model = Pipeline([
     ("scaler", StandardScaler()),
-    ("rf", RandomForestClassifier(n_estimators=200, 
-            min_samples_split=10, class_weight="balanced", 
-            max_depth=12, random_state=1)
+    ("rf", RandomForestClassifier(
+        n_estimators=200, 
+        min_samples_split=10, 
+        class_weight="balanced", 
+        max_depth=12, 
+        random_state=1)
     )])
 
 model.fit(matches[predictors], matches["target"])
