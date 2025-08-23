@@ -4,7 +4,10 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 import joblib
 
-matches = pd.read_csv("my_matches.csv", index_col=0)
+matches = pd.read_csv("matches_data/my_matches.csv", index_col=0)
+
+class MissingDict(dict):
+    __missing__ = lambda self, key: key
 
 def refactor_features(matches):
 
@@ -104,6 +107,13 @@ def refactor_features(matches):
     matches["total_team_points"] = (matches.groupby(["season", "team"])["result_code"].cumsum().shift(fill_value=0))
     matches[["total_team_points"]] = matches[["total_team_points"]].fillna(0)
 
+    map_values = {"Brighton and Hove Albion": "Brighton", "Manchester United": "Manchester Utd", "Newcastle United": "Newcastle Utd", "Tottenham Hotspur": "Tottenham", "West Ham United": "West Ham", "Wolverhampton Wanderers": "Wolves"} 
+    mapping = MissingDict(**map_values)
+
+    matches["new_team"] = matches["team"].map(mapping)
+    matches = matches.drop(columns = "team")
+
+    matches = matches.rename(columns={'new_team': 'team'})
 
     matches = matches.drop(columns=["attendance", "notes" ])
 
