@@ -18,7 +18,7 @@ All data was scraped from **FBref**
 - **Training Data:** FBref Premier League seasons (2022 → 2025)  
 - **Target:** Match outcome (Win / Draw / Loss)  
 
-### Performance  
+## Performance  
 The model was trained on **three full seasons (2022/23, 2023/24, 2024/25)** and then evaluated on the **2024/25 season**.  
 
 - **Accuracy:** 51.2%  
