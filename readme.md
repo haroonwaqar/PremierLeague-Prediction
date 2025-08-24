@@ -28,3 +28,6 @@ The web app allows you to:
 1. Select a **matchday** from the 2025/26 season.  
 2. View fixtures for that day.  
 3. Choose a match → get predicted probabilities for **Win / Draw / Loss**.  
+
+### screenshot:
+![alt text](<screenshot/Screenshot 2025-08-24 at 7.45.17 PM.png>)
