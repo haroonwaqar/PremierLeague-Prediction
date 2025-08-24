@@ -21,7 +21,7 @@ All data was scraped from **FBref**
 ### Performance  
 The model was trained on **three full seasons (2022/23, 2023/24, 2024/25)** and then evaluated on the **2024/25 season**.  
 
-- **Accuracy:** ~48%  
+- **Accuracy:** 51.2%  
 
 ## Streamlit App 
 The web app allows you to:  

@@ -6,17 +6,17 @@ from scripts.train import refactor_features
 pipeline = joblib.load("PL_football_pipeline.pkl")
 
 # read this season
-new_matches = pd.read_csv("matches_data/pl_25_26.csv")
+new_matches = pd.read_csv("scripts/pl_25_26.csv")
 
 # add the new features need for prediction 
 new_matches = refactor_features(new_matches)
 
-new_matches.to_csv("matches_data/pl_25_26.csv")
+new_matches.to_csv("pl_25_26.csv")
 
-new_matches = new_matches[["date", "team", "opponent", "round",
-            "venue_code", "opp_code", "hours", "day_code", "team_form_5", 
-            "avg_gf_5", "avg_ga_5", "avg_gd_5", "roll_xg_10", "opp_form_5", 
-            "form_difference_5", "avg_sh_5", "avg_sot_5", "total_team_points"]]
+new_matches = new_matches[["date","team","opponent","round", "venue_code",
+        "opp_code", "hours", "day_code","xg_rolling", "gf_rolling", "ga_rolling",
+        "sh_rolling", "sot_rolling", "dist_rolling", "fk_rolling", "pk_rolling", 
+        "team_form_5", "opp_form_5", "form_difference_5", "total_team_points"]]
 
 # Make prediction
 def prediction(match_row):

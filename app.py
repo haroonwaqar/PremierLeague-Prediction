@@ -3,7 +3,7 @@ import pandas as pd
 from scripts.predict import prediction
 
 # read this season 
-matches = pd.read_csv("matches_data/pl_25_26.csv")
+matches = pd.read_csv("pl_25_26.csv")
 
 st.title("⚽ Premier League Match Predictor")
 
