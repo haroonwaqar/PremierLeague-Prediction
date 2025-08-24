@@ -126,8 +126,6 @@ model = Pipeline([
 
 model.fit(matches[predictors], matches["target"])
 
-matches.to_csv("test.csv")
-
 joblib.dump(model, "PL_football_pipeline.pkl")
 
 
