@@ -36,7 +36,10 @@ if st.button("Predict Result"):
     prob, proba = prediction(match_row)
 
     outcome_mapping = {0: "Lose", 1: "Draw", 2: "Win"}
-    st.write(f"### {team} to {(outcome_mapping[prob]).lower()} vs {opponent}")
+    if (int(prob)==1):
+        st.write(f"### {team} to {(outcome_mapping[prob]).lower()} with {opponent}")
+    else:
+        st.write(f"### {team} to {(outcome_mapping[prob]).lower()} against {opponent}")
     #st.write(f"#### Predicted Outcome: **{outcome_mapping[prob]}**")
     st.write(f"Probability Distribution: ")
 
