@@ -29,5 +29,8 @@ The web app allows you to:
 2. View fixtures for that day.  
 3. Choose a match → get predicted probabilities for **Win / Draw / Loss**.  
 
-### screenshot:
+## Live Demo
+Try it here: [Premier League Prediction App](https://premierleague-prediction.streamlit.app/)
+
+## Screenshot:
 ![alt text](<screenshot/Screenshot 2025-08-24 at 7.45.17 PM.png>)
