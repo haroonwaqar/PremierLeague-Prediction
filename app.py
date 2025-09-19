@@ -26,6 +26,8 @@ selected_match = st.selectbox("Choose a Match to Predict", match_options)
 
 # locate the row which is selected
 match_row = day_matches_sorted.iloc[match_options.index(selected_match)]
+team = str(match_row['team'])
+opponent = str(match_row['opponent'])
 
 # Predict button
 if st.button("Predict Result"):
@@ -33,8 +35,9 @@ if st.button("Predict Result"):
     # sends it to the prediction function
     prob, proba = prediction(match_row)
 
-    outcome_mapping = {0: "Loss", 1: "Draw", 2: "Win"}
-    st.write(f"### Predicted Outcome: **{outcome_mapping[prob]}**")
+    outcome_mapping = {0: "Lose", 1: "Draw", 2: "Win"}
+    st.write(f"### {team} to {(outcome_mapping[prob]).lower()} vs {opponent}")
+    #st.write(f"#### Predicted Outcome: **{outcome_mapping[prob]}**")
     st.write(f"Probability Distribution: ")
 
     # clean way of displaying probabilities
